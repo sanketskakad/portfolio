@@ -49,7 +49,7 @@ function discoverArticles() {
       rawText: rawText,
       category: meta.category || 'Generative AI',
       readTime: meta.readTime || '5 min read',
-      date: meta.date || '2025',
+      date: meta.date || '2026',
       author: meta.author || 'Sanket Kakad',
       title: meta.title || filename.replace(/-/g, ' '),
       excerpt: meta.excerpt || 'Technical publication.'

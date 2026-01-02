@@ -37,4 +37,4 @@ npm run build
 
 ## License & Copyright
 
-© 2025 Sanket Kakad. All rights reserved.
+© 2026 Sanket Kakad. All rights reserved.
