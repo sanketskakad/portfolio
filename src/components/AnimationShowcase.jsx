@@ -90,7 +90,7 @@ export default function AnimationShowcase({ annotationsEnabled }) {
       id: 2,
       title: 'Shared Layout Morph',
       badge: 'LayoutID Engine',
-      desc: 'Seamless position and scale transitions across component updates.',
+      desc: 'Smooth position and scale transitions across component updates.',
       color: 'from-cyan-500/20 to-blue-500/20 border-cyan-500/30'
     },
     {
@@ -120,7 +120,7 @@ export default function AnimationShowcase({ annotationsEnabled }) {
             GSAP & Framer Motion Suite
           </h2>
           <p className="text-slate-300 text-base md:text-lg font-light leading-relaxed">
-            Harness high-frequency timeline controls alongside gestural physics for ultimate UI reactivity.
+            Use high-frequency timeline controls alongside gestural physics for ultimate UI reactivity.
           </p>
         </div>
 
