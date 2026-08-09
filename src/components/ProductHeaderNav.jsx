@@ -39,13 +39,6 @@ export default function ProductHeaderNav({ theme, toggleTheme }) {
           <span className={`font-semibold tracking-wide ${isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'}`}>
             Sanket Kakad GenAI Portfolio
           </span>
-          <button 
-            onClick={triggerConfetti}
-            className="text-[#0071e3] hover:underline font-medium ml-2 cursor-pointer flex items-center gap-1"
-          >
-            <span>Explore AI Demos</span>
-            <ProfessionalDoodle type="orbit" className="w-3.5 h-3.5 text-[#0071e3]" />
-          </button>
         </span>
       </div>
 
