@@ -1,0 +1,6 @@
+# Robots.txt for Sanket Kakad Portfolio
+User-agent: *
+Allow: /
+
+# Sitemap Location
+Sitemap: https://sanketskakad.github.io/portfolio/sitemap.xml
