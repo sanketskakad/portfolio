@@ -91,6 +91,17 @@ export default function Footer({ theme = 'dark' }) {
             <ul className={`flex flex-col gap-3 font-medium ${isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'}`}>
               <li>
                 <a 
+                  href="https://sanket-kakad-agentic-travel-booking-app.onrender.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="hover:text-[#0071e3] transition-colors flex items-center gap-1 text-[#0071e3] font-semibold"
+                >
+                  <span>Agentic Travel Booking</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
+                <a 
                   href="https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt" 
                   target="_blank" 
                   rel="noopener noreferrer" 

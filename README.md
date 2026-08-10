@@ -1,7 +1,9 @@
 # Sanket Kakad • Senior AI Engineer Portfolio
 
 **Author**: Sanket Kakad ([sanket.kakad@gmail.com](mailto:sanket.kakad@gmail.com))  
-**Live Project**: [USA Constitution GPT on Hugging Face](https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt)
+**Live Projects**: 
+- [Agentic Travel Booking App](https://sanket-kakad-agentic-travel-booking-app.onrender.com/) ([GitHub Repo](https://github.com/sanketskakad/agentic-travel-booking-app))
+- [USA Constitution GPT on Hugging Face](https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt)
 
 ---
 

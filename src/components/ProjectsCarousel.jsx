@@ -1,54 +1,79 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { useGSAP } from '@gsap/react';
+import React, { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import rough from 'roughjs';
-import { Cpu, ArrowUpRight } from 'lucide-react';
-import confetti from 'canvas-confetti';
+import { Cpu, ArrowUpRight, Bot } from 'lucide-react';
 import RoughAnnotation from './RoughAnnotation';
+
+const GithubIcon = ({ className = "w-4 h-4" }) => (
+  <svg className={className} fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+    <path fillRule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clipRule="evenodd" />
+  </svg>
+);
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function ProjectsCarousel({ theme = 'dark' }) {
-  const canvasRef = useRef(null);
+  const usaCanvasRef = useRef(null);
   const isDark = theme === 'dark';
 
-  const project = {
-    id: 0,
-    category: 'Generative AI & Hugging Face Space',
-    icon: Cpu,
-    title: 'USA Constitution GPT',
-    titleHighlight: 'Legal RAG Engine.',
-    url: 'https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt',
-    annotationType: 'highlight',
-    annotationColor: isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)',
-    desc: 'Conversational AI assistant trained for US Constitutional law querying, precise article citation extraction, and legal document Q&A.',
-    stat: 'Hugging Face Space',
-    statDesc: 'Live Model Deployment',
-    tech: ['Hugging Face', 'Python', 'LangChain', 'Gradio'],
-    gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
-    borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30'
-  };
+  const projects = [
+    {
+      id: 'agentic-travel-booking',
+      category: 'Multi-Agent Autonomous AI App',
+      icon: Bot,
+      title: 'Agentic Travel Booking',
+      titleHighlight: 'Multi-Agent System.',
+      url: 'https://sanket-kakad-agentic-travel-booking-app.onrender.com/',
+      githubUrl: 'https://github.com/sanketskakad/agentic-travel-booking-app',
+      videoUrl: 'https://www.youtube.com/embed/b3lpHCb_nlU?autoplay=1&loop=1&playlist=b3lpHCb_nlU&mute=1&controls=0&playsinline=1&rel=0',
+      annotationType: 'highlight',
+      annotationColor: isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)',
+      desc: 'Autonomous multi-agent travel orchestration system. Executes flight, hotel, and activity search, generates customized itineraries, and orchestrates live booking workflows in real-time.',
+      stat: 'Live on Render',
+      statDesc: 'Production Multi-Agent App',
+      tech: ['Python', 'FastAPI', 'React', 'Multi-Agent Workflows', 'Docker', 'Render'],
+      gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
+      borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30',
+      mediaType: 'video'
+    },
+    {
+      id: 'usa-constitution-gpt',
+      category: 'Generative AI & Hugging Face Space',
+      icon: Cpu,
+      title: 'USA Constitution GPT',
+      titleHighlight: 'Legal RAG Engine.',
+      url: 'https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt',
+      githubUrl: null,
+      annotationType: 'highlight',
+      annotationColor: isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)',
+      desc: 'Conversational AI assistant trained for US Constitutional law querying, precise article citation extraction, and legal document Q&A.',
+      stat: 'Hugging Face Space',
+      statDesc: 'Live Model Deployment',
+      tech: ['Hugging Face', 'Python', 'LangChain', 'Gradio'],
+      gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
+      borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30',
+      mediaType: 'canvas'
+    }
+  ];
 
   // Render RoughJS Vector Canvas Sketch for USA Constitution GPT
   useEffect(() => {
-    const canvas = canvasRef.current;
+    const canvas = usaCanvasRef.current;
     if (!canvas) return;
 
     const rc = rough.canvas(canvas);
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    const strokeColor = project.annotationColor;
+    const strokeColor = isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)';
     const fillStyle = isDark ? '#1c1c1e' : '#ffffff';
 
     rc.rectangle(20, 20, 320, 200, { fill: fillStyle, roughness: 1.5, stroke: strokeColor });
     rc.circle(180, 120, 90, { fill: strokeColor, fillStyle: 'hachure', stroke: strokeColor });
     rc.line(60, 60, 180, 120, { stroke: strokeColor, strokeWidth: 2 });
     rc.line(300, 60, 180, 120, { stroke: strokeColor, strokeWidth: 2 });
-  }, [isDark, project.annotationColor]);
-
-  const Icon = project.icon;
+  }, [isDark]);
 
   return (
     <section 
@@ -62,114 +87,165 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
         {/* Section Header */}
         <div className="mb-12">
           <span className="text-xs font-mono text-[#0071e3] uppercase tracking-widest block mb-1">
-            Featured Live Project
+            Featured Live Projects
           </span>
           <h2 className={`text-3xl sm:text-5xl font-extrabold tracking-tight ${
             isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
           }`}>
-            Production AI Architecture
+            Production AI Architectures
           </h2>
         </div>
 
-        {/* Featured Project Card */}
-        <div className={`apple-glass-card rounded-3xl p-8 md:p-12 border ${project.borderColor} bg-gradient-to-br ${project.gradient} grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-2xl relative overflow-hidden`}>
-          
-          {/* Left Column: Title & Text */}
-          <div className="lg:col-span-7 flex flex-col justify-between">
-            <div>
-              <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border ${
-                isDark ? 'bg-[#2c2c2e]/60 border-white/10 text-[#f5f5f7]' : 'bg-[#ffffff]/80 border-slate-300 text-[#1d1d1f] shadow-sm'
-              }`}>
-                <Icon className="w-3.5 h-3.5 text-[#0071e3]" />
-                <span>Live Project • {project.category}</span>
-              </div>
-
-              <h3 className={`text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 ${
-                isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
-              }`}>
-                {project.title}{' '}
-                <RoughAnnotation
-                  type={project.annotationType}
-                  color={project.annotationColor}
-                  show={true}
-                  strokeWidth={3}
-                >
-                  <span className={`px-1 ${isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'}`}>{project.titleHighlight}</span>
-                </RoughAnnotation>
-              </h3>
-
-              <p className={`text-base md:text-lg font-light leading-relaxed mb-6 max-w-xl ${
-                isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
-              }`}>
-                {project.desc}
-              </p>
-
-              {/* Tech Chips */}
-              <div className="flex flex-wrap gap-2 mb-8">
-                {project.tech.map((t, tIdx) => (
-                  <span 
-                    key={tIdx} 
-                    className={`px-3 py-1 rounded-full text-xs font-mono font-semibold border ${
-                      isDark ? 'bg-[#2c2c2e] border-white/10 text-[#2997ff]' : 'bg-[#ffffff] border-[#d2d2d7] text-[#0071e3]'
-                    }`}
-                  >
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Stat Footnote & Action Button */}
-            <div className={`pt-6 border-t flex items-center justify-between ${
-              isDark ? 'border-[#2c2c2e]' : 'border-[#d2d2d7]'
-            }`}>
-              <div>
-                <span className={`block text-2xl font-extrabold font-mono tracking-tight ${
-                  isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
-                }`}>
-                  {project.stat}
-                </span>
-                <span className={`text-xs font-medium ${
-                  isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
-                }`}>
-                  {project.statDesc}
-                </span>
-              </div>
-
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-5 py-2.5 rounded-full text-xs font-semibold transition-all border flex items-center gap-1.5 cursor-pointer active:scale-95 bg-[#0071e3] hover:bg-[#0077ed] text-white border-[#0071e3] shadow-md shadow-[#0071e3]/30"
+        {/* Featured Projects Stack */}
+        <div className="space-y-12">
+          {projects.map((project) => {
+            const Icon = project.icon;
+            return (
+              <div 
+                key={project.id}
+                className={`apple-glass-card rounded-3xl p-8 md:p-12 border ${project.borderColor} bg-gradient-to-br ${project.gradient} grid grid-cols-1 lg:grid-cols-12 gap-8 items-center shadow-2xl relative overflow-hidden`}
               >
-                <span>Open Live Space</span>
-                <ArrowUpRight className="w-4 h-4 text-white" />
-              </a>
-            </div>
-          </div>
+                
+                {/* Left Column: Title & Text */}
+                <div className="lg:col-span-7 flex flex-col justify-between h-full">
+                  <div>
+                    <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6 border ${
+                      isDark ? 'bg-[#2c2c2e]/60 border-white/10 text-[#f5f5f7]' : 'bg-[#ffffff]/80 border-slate-300 text-[#1d1d1f] shadow-sm'
+                    }`}>
+                      <Icon className="w-3.5 h-3.5 text-[#0071e3]" />
+                      <span>Live Project • {project.category}</span>
+                    </div>
 
-          {/* Right Column: RoughJS Canvas Display */}
-          <div className="lg:col-span-5 flex flex-col items-center justify-center">
-            <div className={`w-full rounded-2xl border p-4 flex items-center justify-center min-h-[240px] relative overflow-hidden shadow-inner ${
-              isDark ? 'bg-[#000000] border-[#2c2c2e]' : 'bg-[#ffffff] border-[#d2d2d7]'
-            }`}>
-              <canvas
-                ref={canvasRef}
-                width={360}
-                height={240}
-                className="w-full h-[240px] object-contain"
-              />
-              <div className={`absolute bottom-3 right-3 text-[10px] font-mono px-2 py-0.5 rounded border ${
-                isDark ? 'text-[#86868b] bg-[#161617] border-[#2c2c2e]' : 'text-[#6e6e73] bg-[#f5f5f7] border-[#d2d2d7]'
-              }`}>
-                Hugging Face Vector Architecture
+                    <h3 className={`text-3xl sm:text-5xl font-extrabold tracking-tight leading-[1.1] mb-6 ${
+                      isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
+                    }`}>
+                      {project.title}{' '}
+                      <RoughAnnotation
+                        type={project.annotationType}
+                        color={project.annotationColor}
+                        show={true}
+                        strokeWidth={3}
+                      >
+                        <span className={`px-1 ${isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'}`}>{project.titleHighlight}</span>
+                      </RoughAnnotation>
+                    </h3>
+
+                    <p className={`text-base md:text-lg font-light leading-relaxed mb-6 max-w-xl ${
+                      isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
+                    }`}>
+                      {project.desc}
+                    </p>
+
+                    {/* Tech Chips */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {project.tech.map((t, tIdx) => (
+                        <span 
+                          key={tIdx} 
+                          className={`px-3 py-1 rounded-full text-xs font-mono font-semibold border ${
+                            isDark ? 'bg-[#2c2c2e] border-white/10 text-[#2997ff]' : 'bg-[#ffffff] border-[#d2d2d7] text-[#0071e3]'
+                          }`}
+                        >
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Stat Footnote & Action Buttons */}
+                  <div className={`pt-6 border-t flex flex-wrap items-center justify-between gap-4 ${
+                    isDark ? 'border-[#2c2c2e]' : 'border-[#d2d2d7]'
+                  }`}>
+                    <div>
+                      <span className={`block text-2xl font-extrabold font-mono tracking-tight ${
+                        isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
+                      }`}>
+                        {project.stat}
+                      </span>
+                      <span className={`text-xs font-medium ${
+                        isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
+                      }`}>
+                        {project.statDesc}
+                      </span>
+                    </div>
+
+                    <div className="flex items-center gap-3">
+                      {project.githubUrl && (
+                        <a
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={`px-4 py-2.5 rounded-full text-xs font-semibold transition-all border flex items-center gap-1.5 cursor-pointer active:scale-95 ${
+                            isDark 
+                              ? 'bg-[#2c2c2e] hover:bg-[#3a3a3c] text-[#f5f5f7] border-white/10 hover:border-white/20'
+                              : 'bg-white hover:bg-slate-100 text-[#1d1d1f] border-slate-300 shadow-sm'
+                          }`}
+                        >
+                          <GithubIcon className="w-4 h-4 text-[#0071e3]" />
+                          <span>GitHub</span>
+                        </a>
+                      )}
+                      <a
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="px-5 py-2.5 rounded-full text-xs font-semibold transition-all border flex items-center gap-1.5 cursor-pointer active:scale-95 bg-[#0071e3] hover:bg-[#0077ed] text-white border-[#0071e3] shadow-md shadow-[#0071e3]/30"
+                      >
+                        <span>{project.githubUrl ? 'Open Live App' : 'Open Live Space'}</span>
+                        <ArrowUpRight className="w-4 h-4 text-white" />
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column: Media Display */}
+                <div className="lg:col-span-5 flex flex-col items-center justify-center">
+                  {project.mediaType === 'video' ? (
+                    <div className={`w-full aspect-video rounded-2xl border relative overflow-hidden shadow-inner ${
+                      isDark ? 'bg-black border-[#2c2c2e]' : 'bg-slate-900 border-[#d2d2d7]'
+                    }`}>
+                      <iframe
+                        src={project.videoUrl}
+                        title={`${project.title} Video Preview`}
+                        className="w-full h-full border-0 object-cover"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowFullScreen
+                      />
+                      <div className={`absolute top-3 right-3 text-[10px] font-mono px-2.5 py-1 rounded-full border flex items-center gap-1.5 backdrop-blur-md ${
+                        isDark ? 'text-[#f5f5f7] bg-[#161617]/80 border-white/10' : 'text-[#1d1d1f] bg-[#ffffff]/80 border-slate-300 shadow-sm'
+                      }`}>
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                        </span>
+                        <span className="font-semibold tracking-wide">Live Demo Video</span>
+                      </div>
+                    </div>
+                  ) : (
+                    <div className={`w-full rounded-2xl border p-4 flex items-center justify-center min-h-[240px] relative overflow-hidden shadow-inner ${
+                      isDark ? 'bg-[#000000] border-[#2c2c2e]' : 'bg-[#ffffff] border-[#d2d2d7]'
+                    }`}>
+                      <canvas
+                        ref={usaCanvasRef}
+                        width={360}
+                        height={240}
+                        className="w-full h-[240px] object-contain"
+                      />
+                      <div className={`absolute bottom-3 right-3 text-[10px] font-mono px-2 py-0.5 rounded border ${
+                        isDark ? 'text-[#86868b] bg-[#161617] border-[#2c2c2e]' : 'text-[#6e6e73] bg-[#f5f5f7] border-[#d2d2d7]'
+                      }`}>
+                        Hugging Face Vector Architecture
+                      </div>
+                    </div>
+                  )}
+                </div>
+
               </div>
-            </div>
-          </div>
-
+            );
+          })}
         </div>
 
       </div>
     </section>
   );
 }
+
