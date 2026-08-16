@@ -3,7 +3,7 @@ import { useGSAP } from '@gsap/react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import rough from 'roughjs';
-import { Cpu, ArrowUpRight, Bot } from 'lucide-react';
+import { Cpu, ArrowUpRight, Bot, FileText } from 'lucide-react';
 import RoughAnnotation from './RoughAnnotation';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -38,6 +38,25 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
       stat: 'Live on Render',
       statDesc: 'Production Multi-Agent App',
       tech: ['Python', 'FastAPI', 'React', 'Multi-Agent Workflows', 'Docker', 'Render'],
+      gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
+      borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30',
+      mediaType: 'video'
+    },
+    {
+      id: 'multipdf-chatbot',
+      category: 'Production RAG & Vector Engine',
+      icon: FileText,
+      title: 'Advanced Multi-PDF Chatbot',
+      titleHighlight: 'Groq Llama 3.1 RAG.',
+      url: 'https://sanket-kakad-multi-pdf-advanced-rag.vercel.app/',
+      githubUrl: 'https://github.com/sanketskakad/multipdf-chatbot',
+      videoUrl: 'https://www.youtube.com/embed/bh_6XDT8_zY?autoplay=1&loop=1&playlist=bh_6XDT8_zY&mute=1&controls=0&playsinline=1&rel=0',
+      annotationType: 'highlight',
+      annotationColor: isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)',
+      desc: 'Sub-second, production-grade RAG engine with pre-cached vector indexing, page-aware chunking, hybrid BM25 + dense retrieval, FlashRank re-ranking, and Groq Llama 3.1 8B instant inference.',
+      stat: 'Live on Vercel',
+      statDesc: 'Production Multi-PDF RAG',
+      tech: ['Python', 'FastAPI', 'Groq Llama 3.1', 'ChromaDB', 'BM25 RAG', 'React', 'Vercel'],
       gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
       borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30',
       mediaType: 'video'
@@ -164,10 +183,11 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
           </div>
         </div>
 
-        {/* Horizontal Track (Width = 200% for 2 projects) */}
+        {/* Horizontal Track */}
         <div
           ref={trackRef}
-          className="flex flex-nowrap w-[200%] h-full items-center my-auto z-10 will-change-transform"
+          style={{ width: `${projects.length * 100}%` }}
+          className="flex flex-nowrap h-full items-center my-auto z-10 will-change-transform"
         >
           {projects.map((project, idx) => {
             const Icon = project.icon;

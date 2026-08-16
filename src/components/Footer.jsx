@@ -96,6 +96,17 @@ export default function Footer({ theme = 'dark' }) {
               </li>
               <li>
                 <a
+                  href="https://sanket-kakad-multi-pdf-advanced-rag.vercel.app/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#0071e3] transition-colors flex items-center gap-1 text-[#0071e3] font-semibold"
+                >
+                  <span>Advanced Multi-PDF Chatbot</span>
+                  <ExternalLink className="w-3 h-3" />
+                </a>
+              </li>
+              <li>
+                <a
                   href="https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt"
                   target="_blank"
                   rel="noopener noreferrer"
