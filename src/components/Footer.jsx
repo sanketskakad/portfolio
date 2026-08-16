@@ -9,26 +9,22 @@ export default function Footer({ theme = 'dark' }) {
   };
 
   return (
-    <footer className={`border-t transition-colors duration-500 pt-16 pb-12 relative overflow-hidden ${
-      isDark ? 'bg-[#161617] border-[#2c2c2e] text-[#f5f5f7]' : 'bg-[#e8e8ed] border-[#d2d2d7] text-[#1d1d1f]'
-    }`}>
-      
+    <footer className={`border-t transition-colors duration-500 pt-16 pb-12 relative overflow-hidden ${isDark ? 'bg-[#161617] border-[#2c2c2e] text-[#f5f5f7]' : 'bg-[#e8e8ed] border-[#d2d2d7] text-[#1d1d1f]'
+      }`}>
+
       <div className="max-w-6xl mx-auto px-6">
-        
+
         {/* Top Header Banner */}
-        <div className={`flex flex-col md:flex-row items-center justify-between pb-12 border-b gap-6 ${
-          isDark ? 'border-[#2c2c2e]' : 'border-[#d2d2d7]'
-        }`}>
+        <div className={`flex flex-col md:flex-row items-center justify-between pb-12 border-b gap-6 ${isDark ? 'border-[#2c2c2e]' : 'border-[#d2d2d7]'
+          }`}>
           <div>
-            <div className={`flex items-center gap-2 text-2xl font-extrabold tracking-tight mb-1 ${
-              isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
-            }`}>
+            <div className={`flex items-center gap-2 text-2xl font-extrabold tracking-tight mb-1 ${isDark ? 'text-[#f5f5f7]' : 'text-[#1d1d1f]'
+              }`}>
               <span>Sanket Kakad</span>
               <span className="w-2.5 h-2.5 rounded-full bg-[#0071e3]" />
             </div>
-            <p className={`text-xs font-light max-w-md ${
-              isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
-            }`}>
+            <p className={`text-xs font-light max-w-md ${isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
+              }`}>
               Senior AI Engineer building production LLM architectures, agentic workflows, and low-latency streaming engines.
             </p>
           </div>
@@ -36,11 +32,10 @@ export default function Footer({ theme = 'dark' }) {
           <div className="flex items-center gap-3">
             <button
               onClick={scrollToTop}
-              className={`px-4 py-2 rounded-full transition-all border cursor-pointer active:scale-95 flex items-center gap-1.5 text-xs font-semibold ${
-                isDark 
-                  ? 'bg-[#2c2c2e] text-[#f5f5f7] hover:bg-[#3a3a3c] border-[#2c2c2e]' 
+              className={`px-4 py-2 rounded-full transition-all border cursor-pointer active:scale-95 flex items-center gap-1.5 text-xs font-semibold ${isDark
+                  ? 'bg-[#2c2c2e] text-[#f5f5f7] hover:bg-[#3a3a3c] border-[#2c2c2e]'
                   : 'bg-[#ffffff] text-[#1d1d1f] hover:bg-[#f5f5f7] border-[#d2d2d7] shadow-sm'
-              }`}
+                }`}
               title="Back to Top"
             >
               <span>Back to Top</span>
@@ -50,10 +45,9 @@ export default function Footer({ theme = 'dark' }) {
         </div>
 
         {/* Clean Aligned Site Map & Contact Info Grid */}
-        <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 py-12 border-b text-xs ${
-          isDark ? 'border-[#2c2c2e]' : 'border-[#d2d2d7]'
-        }`}>
-          
+        <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8 py-12 border-b text-xs ${isDark ? 'border-[#2c2c2e]' : 'border-[#d2d2d7]'
+          }`}>
+
           {/* Column 1: Site Map Navigation */}
           <div>
             <h4 className={`font-mono font-bold uppercase tracking-wider mb-4 text-[11px] text-[#0071e3]`}>
@@ -90,10 +84,10 @@ export default function Footer({ theme = 'dark' }) {
             </h4>
             <ul className={`flex flex-col gap-3 font-medium ${isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'}`}>
               <li>
-                <a 
-                  href="https://sanket-kakad-agentic-travel-booking-app.onrender.com/" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://sanket-kakad-agentic-travel-booking-app.onrender.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-[#0071e3] transition-colors flex items-center gap-1 text-[#0071e3] font-semibold"
                 >
                   <span>Agentic Travel Booking</span>
@@ -101,10 +95,10 @@ export default function Footer({ theme = 'dark' }) {
                 </a>
               </li>
               <li>
-                <a 
-                  href="https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href="https://huggingface.co/spaces/SANKETKAKAD/usa-constitution-gpt"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="hover:text-[#0071e3] transition-colors flex items-center gap-1 text-[#0071e3] font-semibold"
                 >
                   <span>USA Constitution GPT</span>
@@ -133,10 +127,10 @@ export default function Footer({ theme = 'dark' }) {
               Contact Information
             </h4>
             <div className={`flex flex-col gap-3 font-medium ${isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'}`}>
-              
+
               {/* Direct Email */}
-              <a 
-                href="mailto:sanket.kakad@gmail.com" 
+              <a
+                href="mailto:sanket.kakad@gmail.com"
                 className="hover:text-[#0071e3] transition-colors flex items-center gap-2 text-[#0071e3] font-semibold break-all"
               >
                 <Mail className="w-4 h-4 shrink-0 text-[#0071e3]" />
@@ -155,9 +149,8 @@ export default function Footer({ theme = 'dark' }) {
         </div>
 
         {/* Bottom Legal & Copyright Bar */}
-        <div className={`pt-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-4 font-mono ${
-          isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
-        }`}>
+        <div className={`pt-8 flex flex-col sm:flex-row items-center justify-between text-xs gap-4 font-mono ${isDark ? 'text-[#86868b]' : 'text-[#6e6e73]'
+          }`}>
           <div className="flex items-center gap-1.5">
             <span>© {new Date().getFullYear()} Sanket Kakad. Built with</span>
             <Heart className="w-3.5 h-3.5 text-rose-500 fill-rose-500 inline-block animate-pulse" />
