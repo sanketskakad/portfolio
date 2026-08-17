@@ -51,7 +51,7 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
       titleHighlight: 'Multi-Agent System.',
       url: 'https://sanket-kakad-agentic-travel-booking.vercel.app/',
       githubUrl: 'https://github.com/sanketskakad/agentic-travel-booking-app',
-      videoUrl: 'https://www.youtube.com/embed/oMdAULxQ_HE?autoplay=1&loop=1&playlist=b3lpHCb_nlU&mute=1&controls=0&playsinline=1&rel=0',
+      videoUrl: 'https://www.youtube.com/embed/Jc2GhSvd-_w?autoplay=1&loop=1&playlist=Jc2GhSvd-_w&mute=1&controls=0&playsinline=1&rel=0',
       annotationType: 'highlight',
       annotationColor: isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)',
       desc: 'Autonomous multi-agent travel orchestration system. Executes flight, hotel, and activity search, generates customized itineraries, and orchestrates live booking workflows in real-time.',
