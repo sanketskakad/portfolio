@@ -23,25 +23,7 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
   const isDark = theme === 'dark';
 
   const projects = [
-    {
-      id: 'agentic-travel-booking',
-      category: 'Multi-Agent Autonomous AI App',
-      icon: Bot,
-      title: 'Agentic Travel Booking',
-      titleHighlight: 'Multi-Agent System.',
-      url: 'https://sanket-kakad-agentic-travel-booking-app.onrender.com/',
-      githubUrl: 'https://github.com/sanketskakad/agentic-travel-booking-app',
-      videoUrl: 'https://www.youtube.com/embed/b3lpHCb_nlU?autoplay=1&loop=1&playlist=b3lpHCb_nlU&mute=1&controls=0&playsinline=1&rel=0',
-      annotationType: 'highlight',
-      annotationColor: isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)',
-      desc: 'Autonomous multi-agent travel orchestration system. Executes flight, hotel, and activity search, generates customized itineraries, and orchestrates live booking workflows in real-time.',
-      stat: 'Live on Render',
-      statDesc: 'Production Multi-Agent App',
-      tech: ['Python', 'FastAPI', 'React', 'Multi-Agent Workflows', 'Docker', 'Render'],
-      gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
-      borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30',
-      mediaType: 'video'
-    },
+
     {
       id: 'multipdf-chatbot',
       category: 'Production RAG & Vector Engine',
@@ -57,6 +39,25 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
       stat: 'Live on Vercel',
       statDesc: 'Production Multi-PDF RAG',
       tech: ['Python', 'FastAPI', 'Groq Llama 3.1', 'ChromaDB', 'BM25 RAG', 'React', 'Vercel'],
+      gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
+      borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30',
+      mediaType: 'video'
+    },
+    {
+      id: 'agentic-travel-booking',
+      category: 'Multi-Agent Autonomous AI App',
+      icon: Bot,
+      title: 'Agentic Travel Booking',
+      titleHighlight: 'Multi-Agent System.',
+      url: 'https://sanket-kakad-agentic-travel-booking.vercel.app/',
+      githubUrl: 'https://github.com/sanketskakad/agentic-travel-booking-app',
+      videoUrl: 'https://www.youtube.com/embed/oMdAULxQ_HE?autoplay=1&loop=1&playlist=b3lpHCb_nlU&mute=1&controls=0&playsinline=1&rel=0',
+      annotationType: 'highlight',
+      annotationColor: isDark ? 'rgba(0, 113, 227, 0.4)' : 'rgba(0, 113, 227, 0.25)',
+      desc: 'Autonomous multi-agent travel orchestration system. Executes flight, hotel, and activity search, generates customized itineraries, and orchestrates live booking workflows in real-time.',
+      stat: 'Live on Render',
+      statDesc: 'Production Multi-Agent App',
+      tech: ['Python', 'FastAPI', 'React', 'Multi-Agent Workflows', 'Docker', 'Render'],
       gradient: isDark ? 'from-[#1c1c1e] via-[#161617] to-[#000000]' : 'from-[#ffffff] via-[#f5f5f7] to-[#e8e8ed]',
       borderColor: isDark ? 'border-[#0071e3]/40' : 'border-[#0071e3]/30',
       mediaType: 'video'
@@ -166,16 +167,16 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
 
           {/* Slide Indicator Dots */}
           <div className={`hidden sm:flex items-center gap-3 px-4 py-2 rounded-full border transition-colors ${isDark
-              ? 'bg-[#161617]/90 border-[#2c2c2e]'
-              : 'bg-[#ffffff]/90 border-[#d2d2d7] shadow-sm'
+            ? 'bg-[#161617]/90 border-[#2c2c2e]'
+            : 'bg-[#ffffff]/90 border-[#d2d2d7] shadow-sm'
             }`}>
             {projects.map((p, idx) => (
               <button
                 key={p.id}
                 onClick={() => jumpToSlide(idx)}
                 className={`transition-all duration-300 rounded-full cursor-pointer ${activeSlide === idx
-                    ? 'w-8 h-2.5 bg-[#0071e3] shadow-md shadow-[#0071e3]/40'
-                    : isDark ? 'w-2.5 h-2.5 bg-white/20 hover:bg-white/40' : 'w-2.5 h-2.5 bg-black/20 hover:bg-black/40'
+                  ? 'w-8 h-2.5 bg-[#0071e3] shadow-md shadow-[#0071e3]/40'
+                  : isDark ? 'w-2.5 h-2.5 bg-white/20 hover:bg-white/40' : 'w-2.5 h-2.5 bg-black/20 hover:bg-black/40'
                   }`}
                 title={`Jump to Project ${idx + 1}: ${p.title}`}
               />
@@ -260,8 +261,8 @@ export default function ProjectsCarousel({ theme = 'dark' }) {
                             target="_blank"
                             rel="noopener noreferrer"
                             className={`px-4 py-2.5 rounded-full text-xs font-semibold transition-all border flex items-center gap-1.5 cursor-pointer active:scale-95 ${isDark
-                                ? 'bg-[#2c2c2e] hover:bg-[#3a3a3c] text-[#f5f5f7] border-white/10 hover:border-white/20'
-                                : 'bg-white hover:bg-slate-100 text-[#1d1d1f] border-slate-300 shadow-sm'
+                              ? 'bg-[#2c2c2e] hover:bg-[#3a3a3c] text-[#f5f5f7] border-white/10 hover:border-white/20'
+                              : 'bg-white hover:bg-slate-100 text-[#1d1d1f] border-slate-300 shadow-sm'
                               }`}
                           >
                             <GithubIcon className="w-4 h-4 text-[#0071e3]" />
